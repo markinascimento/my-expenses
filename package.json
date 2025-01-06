@@ -11,12 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.721.0",
+    "@aws-sdk/lib-dynamodb": "^3.721.0",
     "@types/node": "^22.10.5",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0"
   }
 }
