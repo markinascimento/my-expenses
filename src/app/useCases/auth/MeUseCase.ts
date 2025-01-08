@@ -17,7 +17,7 @@ export class MeUseCase {
     jwt.verify(
       accessToken, 
       String(process.env.JWT_SECRET_TOKEN).trim(), 
-      function (err, decoded) {
+      function (err) {
         if(err) {
           throw new UnauthorizedError();
         }
