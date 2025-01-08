@@ -2,10 +2,10 @@
 import { Router } from 'express';
 
 // -> Controllers
-import { createAccountController } from '../app/controllers/account';
+import { signInController } from '../app/controllers/auth';
 
 export const publicRoutes = Router();
 
-publicRoutes.post('/account', (req, res): any => (
-  createAccountController.handler(req, res)
+publicRoutes.post('/account/sign-in', (req, res): any => (
+  signInController.handler(req, res)
 ));
