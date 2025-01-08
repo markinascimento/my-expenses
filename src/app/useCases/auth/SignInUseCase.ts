@@ -40,7 +40,7 @@ export class SignInUseCase {
 
     const accessToken = jwt.sign(
       { username: accountExists.username },
-      String(process.env.JWT_SECRET_TOKEN),
+      String(process.env.JWT_SECRET_TOKEN).trim(),
       { expiresIn: '12h' }
     )
 
