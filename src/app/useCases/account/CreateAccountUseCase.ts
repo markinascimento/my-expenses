@@ -13,9 +13,7 @@ import { NotFoundError } from "../../../shared/errors/NotFoundError";
 import type { AccountDTO } from "../../@types/AccountDTO";
 
 export class CreateAccountUseCase {
-  constructor(
-    private accountRepo: AccountRepository
-  ){}
+  constructor(private accountRepo: AccountRepository){}
   
   async execute(account: AccountDTO) {
     if(!account.fullName) {
