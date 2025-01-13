@@ -9,6 +9,11 @@ import {
   deleteCreditCardController,
   findAllCreditCardController
 } from '../app/controllers/creditCard';
+import {
+  createExpenseController,
+  deleteExpenseController,
+  findAllExpenseByDateController,
+} from '../app/controllers/expense';
 
 export const privateRoutes = Router();
 
@@ -31,4 +36,17 @@ privateRoutes.delete('/credit-card/:id', (req, res): any => (
 privateRoutes.get('/credit-card', (req, res): any => (
   findAllCreditCardController.handler(req, res)
 ));
+
+privateRoutes.get('/expense', (req, res): any => (
+  findAllExpenseByDateController.handler(req, res)
+));
+
+privateRoutes.post('/expense', (req, res): any => (
+  createExpenseController.handler(req, res)
+));
+
+privateRoutes.delete('/expense/:expenseId', (req, res): any => (
+  deleteExpenseController.handler(req, res)
+));
+
 
