@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 // Erros
 import { UnauthorizedError } from '../../shared/errors/UnauthorizedError';
 
-export function authMiddleware(req: Request, res: Response, next: NextFunction) {
+export function authMiddleware(req: Request, res: Response, next: NextFunction): any {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -16,14 +16,17 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
 
   const accessToken = authHeader.split(' ')[1];
 
-  try {
-    jwt.verify(
-      accessToken, 
-      String(process.env.JWT_SECRET_TOKEN).trim()
-    )
-    
-    next();
-  } catch  {
-    return res.status(401);
-  }
+  jwt.verify(
+    accessToken, 
+    String(process.env.JWT_SECRET_TOKEN).trim(), 
+    function (err) {
+      if(err) {
+        throw new UnauthorizedError();
+      }
+      
+      next();
+
+      return; 
+    }
+  )
 }
