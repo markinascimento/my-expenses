@@ -4,6 +4,9 @@ import 'dotenv/config';
 // -> Express
 import express from 'express';
 
+// -> Cors
+import cors from 'cors';
+
 // -> Routes
 import { privateRoutes } from './routes/privateRoutes';
 import { publicRoutes } from './routes/publicRoutes';
@@ -13,6 +16,7 @@ import { authMiddleware } from './app/middlewares/authMiddleware';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json())
 
 app.use('/api/v1', publicRoutes)
